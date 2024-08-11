@@ -1,20 +1,22 @@
+//UserDetail
 <script setup>
+import { defineProps } from "vue";
+
 const props = defineProps({
-	name: String,
-	email: String,
-	phone: Number,
-	website: String,
-	company: String
+  user: Object
 })
+
 </script>
 
 <template>
   <div>
-    <h2>{{ name }}</h2>
-    <p>Email: {{ email }}</p>
-    <p>Phone: {{ phone }}</p>
-    <p>Website: {{ website }}</p>
-    <p>Company: {{ company }}</p>
+    <h2>{{ props.user.name }}</h2>
+    <p>Email: {{ props.user.email }}</p>
+    <p>Phone: {{ props.user.phone }}</p>
+    <p v-if="props.user.website">
+  Website: <a :href="props.user.website" target="_blank">{{ props.user.website }}</a>
+</p>
+    <p>Company: {{ props.user.company }}</p>
   </div>
 </template>
 
